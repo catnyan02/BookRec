@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block choose_book %}
+<div style="margin:100px 0px">
+    <div class="container">
+        <div class="row" style="padding:0px 0px 30px">
+            <div class="col-md-12" style="background-color:#000">
+                <div class="row">
+                    <h1 style="margin:12px 40px;color:#f0a500">Choose book</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="background-color:rgba(0,0,0,0.75); padding: 20px 0px">
+            <div class="col">
+                {% if books %}
+                {% for book in books %}
+                <a style="display:block" href="{{url_for('submit_book', book_id=book[2], opponent_id=opponent_id)}}">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row" style="padding: 5px 0px;">
+                                <div class="col-lg-2 text-center">
+                                    <img src={{book[1]}} height="74px" width="49px" border="1px">
+                                </div>
+                                <div class="col">
+                                    <h5 style="margin:20px;color:#fff">{{book[0]}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {% endfor %}
+                {% else %}
+                    <h4 class="text-center" style="margin:20px;color:#dbdbdb">No book with this name exists, please try again.</h4>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

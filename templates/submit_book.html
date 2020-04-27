@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block submit_book %}
+<div style="margin: 50px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="padding: 15px 20px;">
+                <h2 class="text-center" style="margin:80px 0px 20px;color: #000000;font-size: 60px;font-family:'Montserrat', sans-serif;background-color:rgba(256,256,256,0.65);font-weight:400">Your Recommendation</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-7">
+                <div class="row" style="background-color:rgba(0,0,0,0.75);">
+                    <div class="col-lg-2" style="padding:10px 15px;">
+                        <img src={{book[0]}} border="1px">
+                    </div>
+                    <div class="col" style="padding:30px 15px;">
+                    <h2 style="padding:10px 0 px 12px;color:#f0a500;">{{book[1]}}</h2>
+                    <h5 style="padding:8px 0 px 0px;color:#fff;">by {{book[2]}}</h5>
+                    </div>
+                </div>
+                <div class="row" style="margin:px 0px; background-color:rgba(0,0,0,0.75); color: #fff">
+                    <div style="margin: 10px"> {{ book[3]|safe }} <br> <br> <a href="{{ book[4] }}">Open book in GoodReads</a></div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-5">
+                <form action="" method="post" novalidate>
+                    <div class="row" style="margin: 0px 0px; background-color:rgba(0,0,0,0.75);">
+                        <textarea style="height: 520px; width: 415px; margin: 20px; padding: 10px; background-color: #dbdbdb;" placeholder="Write your own recommendation for this book.         Why do you think this user is going to like this book? Please, avoid spoilers!" name="textarea"></textarea>
+                    </div>
+                    <div class="row" style="margin: 10px 0px;">
+                        <button class="btn btn-primary btn-block" type="submit" style="background-color: #cf7500;">Submit recommendation</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

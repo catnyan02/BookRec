@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale = 1.0, shrink-to-fit=no"/>
+    <title>BookRec</title>
+    <link rel="stylesheet" href="static/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700"/>
+    <link rel="stylesheet" href="static/Header-Dark.css"/>
+    <link rel="stylesheet" href="static/Highlight-Clean.css"/>
+    <link rel="stylesheet" href="static/Navigation-with-Button.css"/>
+    <link rel="stylesheet" href="static/Login-Form-Dark.css"/>
+    <link rel="stylesheet" href="static/MessageBox.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" type="text/css" rel="stylesheet">
+    <script src="https://code.iconify.design/1/1.0.5/iconify.min.js"></script>
+</head>
+<body style="background: url('static/login.jpg')">
+    <nav class="navbar navbar-dark navbar-expand-sm fixed-top shadow d-md-flex navigation-clean-button" style="height:50px;background-color:#000000;">
+        <div class='container-fluid'>
+            <a class="navbar-brand" href="/" style="color: #f0a500;">BookRec</a>
+            <div id="navcol-1" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="/profile" style="color: #dbdbdb;">Profile</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="/recommend" style="color: #dbdbdb;">Recommend</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" href="/discussions" style="color: #dbdbdb;">Discussions</a>
+                    </li>
+                </ul>
+                <span class="navbar-text actions">
+                    {% if current_user.is_authenticated %}
+                        <a class="login" href="/logout">Log Out</a>
+                    {% else %}
+                        <a class="login" href="/login">Log In</a>
+                        <a class="btn btn-light action-button" role="button" href="/signup" style="background-color: #cf7500;">Sign Up</a>
+                    {% endif %}
+                </span>
+            </div>
+        </div>
+    </nav>
+    {% block home %}{% endblock %}
+    {% block login %}{% endblock %}
+    {% block login_old %}{% endblock %}
+    {% block profile %}{% endblock %}
+    {% block recommend_start %}{% endblock %}
+    {% block recommend_failed %}{% endblock %}
+    {% block opponent %}{% endblock %}
+    {% block choose_book %}{% endblock %}
+    {% block submit_book %}{% endblock %}
+    {% block appointed_book %}{% endblock %}
+    {% block enter_gr %}{% endblock %}
+    {% block waiting %}{% endblock %}
+    {% block no_discussions %}{% endblock %}
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+</body>
+</html>

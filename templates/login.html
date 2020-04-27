@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block login %}
+    <div class="login-dark">
+        <form action="" method="post" style="background-color: rgb(0,0,0);" novalidate>
+            {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration">
+                <span class="iconify" data-icon="ion-ios-locked-outline" data-inline="false" style="color: #f0a500"></span>
+            </div>
+            <p class="text-center" style="font-size:16px"> {{message}}</p>
+            <div class="form-group">
+                {{ form.email(class="form-control", type="email", placeholder="Email") }}
+                {% for error in form.email.errors %}
+                    <p class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.password(class="form-control", type="password", placeholder="Password") }}
+                {% for error in form.password.errors %}
+                    <p class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </p>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.remember_me() }} {{ form.remember_me.label }}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-primary btn-block", type="submit", style="background-color: #cf7500;") }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

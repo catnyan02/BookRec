@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block home %}
+    <div style="width:100%;">
+        <div class="header-dark">
+            <div class="container hero">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <h1 class="text-center" style="margin:80px 0px 20px;color: #000000;font-size: 65px;font-family:'Montserrat', sans-serif;background-color:rgba(256,256,256,0.65);font-weight:400">RECOMMEND BOOKS</h1>
+                        <h3 class="text-center" style="margin:20px 0px 40px;color: #ffffff;font-size: 20px;font-family:'Lora', serif;background-color:rgba(0,0,0,0.75);">Share your thoughts and opinions, discover new books and make friends.</h3>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/R28lU1Ua8J0"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="highlight-clean">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center">Exchange favourite books</h2>
+                <p class="text-center">Recommend your favorite books to people with similar reading preferences, get recommendations from them and discuss books together. Go ahead and dive straight into socializing!</p>
+            </div>
+            <div class="buttons">
+                <a class="btn btn-light action-button" href='/recommend' style="background-color: #f0a500;">Recommend</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

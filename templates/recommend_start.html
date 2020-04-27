@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block recommend_start %}
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="padding: 330px 200px;">
+                <div class="row" style="padding: 0px 0px 10px">
+                    <div class="col" style="background-color:rgba(0,0,0,0.75);">
+                        <p style="color:#fff;margin:16px 0px">You have no current recommendations! Press the button to start a recommendation exchange.
+                            <br>
+                            The system will find you an opponent with similar reading taste. Your task will be to recommend them a book that will perfectly suit their genre, sub-genre and theme preference. Good luck!</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <a class="btn btn-light action-button" role="button" href="{{ redirect_url }}" style="background-color:#cf7500; color:#fff">Recommend</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

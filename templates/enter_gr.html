@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block enter_gr %}
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" style="padding: 330px 200px;">
+                <div class="row" style="padding: 0px 0px 10px">
+                    <div class="col" style="background-color:rgba(0,0,0,0.75);">
+                        <p class="text-center" style="color:#fff;margin:16px 0px"> In order make your experience even more satisfying, BookRec uses data from your GoodReads account.
+                            <br>
+                            Please, connect your GoodReads account to your profile to continue the recommendation process.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <a class="btn btn-light action-button" role="button" href="/profile" style="background-color:#cf7500; color:#fff">Go to profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
