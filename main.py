@@ -3,7 +3,6 @@ import datetime
 import xmltodict
 from flask import render_template, request, url_for
 from flask import Flask
-from flask_mail import Mail, Message as Mess
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
 from rauth import OAuth1Session
@@ -25,19 +24,6 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
-
-mail_settings = {
-    "MAIL_SERVER": 'smtp.gmail.com',
-    "MAIL_PORT": 465,
-    "MAIL_USE_TLS": False,
-    "MAIL_USE_SSL": True,
-    "MAIL_USERNAME": 'bookrec.service.notification@gmail.com',
-    "MAIL_PASSWORD": 'K125*k125*'
-}
-
-app.config.update(mail_settings)
-mail = Mail(app)
-
 
 GOODREADS_KEY = 'wkvvh7PIOIzrEFDXpjcQ'
 GOODREADS_SECRET = 'UXRpEtPLubfOrxyqZPrRo44Tu2oMU56lCQeS76M'
