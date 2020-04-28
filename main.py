@@ -16,10 +16,12 @@ from data.preferences import Preference
 from data.exchanges import Exchange
 from data.messages import Message
 from rauth.service import OAuth1Service
+from flask_ngrok import run_with_ngrok
 
 
 app = Flask(__name__)
 
+run_with_ngrok(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
@@ -46,14 +48,6 @@ def create_session(access_token, access_token_secret):
                             access_token=access_token,
                             access_token_secret=access_token_secret)
     return session
-
-
-def create_notification_message(message_content):
-    msg = Mess(subject="Notification from BookRec",
-               sender=app.config.get("MAIL_USERNAME"),
-               recipients=[current_user.email],
-               body=message_content)
-    return msg
 
 
 class LoginForm(FlaskForm):
@@ -317,14 +311,23 @@ def opponent(opponent_id):
 
 @app.route('/choose_book?<book_name>&<opponent_id>')
 def choose_book(book_name, opponent_id):
-    gr_session = create_session(current_user.access_token, current_user.access_token_secret)
-    books = gr_session.get('https://www.goodreads.com/search/index.xml', params={'q': book_name, 'search[field]': 'title'})
-    books = xmltodict.parse(books.content)['GoodreadsResponse']['search']['results']['work']
-    if not isinstance(books, list):
-        books = [books]
-    books = [(book['best_book']['title'] + ' by ' + book['best_book']['author']['name'],
-              book['best_book']['small_image_url'], book['best_book']['id']['#text']) for book in books]
-    return render_template('choose_book.html', books=books, opponent_id=opponent_id)
+    try:
+        gr_session = create_session(current_user.access_token, current_user.access_token_secret)
+        books = gr_session.get('https://www.goodreads.com/search/index.xml',
+                               params={'q': book_name, 'search[field]': 'title'})
+        books = xmltodict.parse(books.content)['GoodreadsResponse']['search']['results']['work']
+        if not isinstance(books, list):
+            books = [books]
+        books = [(book['best_book']['title'] + ' by ' + book['best_book']['author']['name'],
+                  book['best_book']['small_image_url'], book['best_book']['id']['#text']) for book in books]
+        return render_template('choose_book.html', books=books, opponent_id=opponent_id)
+    except TypeError:
+        return redirect('/no_books')
+
+
+@app.route('/no_books')
+def no_books():
+    return render_template('no_books.html')
 
 
 @app.route('/submit_book?<book_id>&<opponent_id>', methods=['GET', 'POST'])
